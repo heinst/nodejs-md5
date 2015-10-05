@@ -1,0 +1,16 @@
+{
+  "name": "md5",
+  "version": "0.1.0",
+  "description": "Gets md5 of file or folder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "md5",
+    "file",
+    "string"
+  ],
+  "author": "Trevor Heins <heinstrevorj@gmail.com> (http://trevorheins.com)",
+  "license": "ISC"
+}
