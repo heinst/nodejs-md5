@@ -1,10 +1,10 @@
 {
-  "name": "md5",
-  "version": "0.1.0",
+  "name": "nodejs-md5",
+  "version": "0.2.0",
   "description": "Gets md5 of file or folder",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./test/test.js"
   },
   "keywords": [
     "md5",
@@ -12,5 +12,19 @@
     "string"
   ],
   "author": "Trevor Heins <heinstrevorj@gmail.com> (http://trevorheins.com)",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://heinst@github.com/heinst/nodejs-md5.git"
+  },
+  "bugs": {
+    "url": "https://github.com/heinst/nodejs-md5/issues"
+  },
+  "homepage": "https://github.com/heinst/nodejs-md5#readme",
+  "dependencies": {
+      "crypto" : "latest",
+      "exceptions" : "latest",
+      "fs" : "latest"
+  }
+
 }

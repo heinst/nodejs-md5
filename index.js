@@ -1,6 +1,19 @@
 var crypto = require('crypto');
+var exceptions = require('exceptions');
 
 exports.string = function (str, algorithm, encoding) {
+    if (!(typeof str === 'string' || str instanceof String))
+    {
+	console.log("not a string");
+        if (typeof str === 'undefined' && !str)
+	{
+	    var undefinedException = new exceptions.Exception("Undefined Exception");
+            undefinedException.thro("String is undefinded or null");	
+	}
+        str = String(str);
+	console.log(str);
+    }
+
     return crypto
         .createHash(algorithm || 'md5')
         .update(str, 'utf8')
@@ -8,7 +21,7 @@ exports.string = function (str, algorithm, encoding) {
 }
 
 exports.file = function(path, algorithim, callback) {
-	var fs = require('fs');
+    var fs = require('fs');
 
     if(!(fs.lstatSync(path).isDirectory()))
     {
@@ -25,6 +38,7 @@ exports.file = function(path, algorithim, callback) {
     }
     else
     {
-        callback(path + ": Is a directory")
+	var dirException = new exceptions.Exception("Directory Exception");
+	dirException.thro(path + ": Is a directory");
     }
 }
