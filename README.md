@@ -26,6 +26,7 @@ md5.file.quiet(['/path/to/some/file.txt', '/path/to/some/other/file.txt'], 'md5'
 });```
 
 ```//md5 -r /path/to/some/file.txt /path/to/some/other/file.txt
+
 md5.file.reverse(['/path/to/some/file.txt', '/path/to/some/other/file.txt'], 'md5', function(md) {
     console.log(md); //[ 'f0ffb8dbde05931dfb9baeee5c86b214 "file.txt"', '59a8935a0ac35991c27f29d4f25ea8b9 "file.txt"' ]
 });```
