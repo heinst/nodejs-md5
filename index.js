@@ -1,17 +1,16 @@
 var crypto = require('crypto');
 var exceptions = require('exceptions');
+var Q = require("q");
 
 exports.string = function (str, algorithm, encoding) {
     if (!(typeof str === 'string' || str instanceof String))
     {
-	console.log("not a string");
         if (typeof str === 'undefined' && !str)
-	{
-	    var undefinedException = new exceptions.Exception("Undefined Exception");
-            undefinedException.thro("String is undefinded or null");	
-	}
+	    {
+	        var undefinedException = new exceptions.Exception("Undefined Exception");
+            undefinedException.thro("String is undefinded or null");
+	    }
         str = String(str);
-	console.log(str);
     }
 
     return crypto
@@ -19,8 +18,36 @@ exports.string = function (str, algorithm, encoding) {
         .update(str, 'utf8')
         .digest(encoding || 'hex');
 }
+exports.file = function(paths, algorithim, callback) {
 
-exports.file = function(path, algorithim, callback) {
+    loopThroughPaths(paths, algorithim, function(md5List){
+        callback(md5List);
+    });
+
+
+}
+
+function loopThroughPaths(paths, algorithim, callback)
+{
+    var md5s = [];
+    var processedCounter = 0;
+    for(var i = 0; i < paths.length; i++)
+    {
+        var path = paths[i];
+        fileMd5(path, algorithim, function(md5) {
+            md5s.push(md5);
+            if (processedCounter + 1 == i)
+            {
+                callback(md5s);
+            }
+            ++processedCounter;
+        });
+
+    }
+}
+
+function fileMd5(path, algorithim, callback)
+{
     var fs = require('fs');
 
     if(!(fs.lstatSync(path).isDirectory()))
@@ -38,7 +65,7 @@ exports.file = function(path, algorithim, callback) {
     }
     else
     {
-	var dirException = new exceptions.Exception("Directory Exception");
-	dirException.thro(path + ": Is a directory");
+	    var dirException = new exceptions.Exception("Directory Exception");
+	    dirException.thro(path + ": Is a directory");
     }
 }
