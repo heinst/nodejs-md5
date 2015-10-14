@@ -171,7 +171,7 @@ exports.file = function(path, callback) {
 
         stream.on('end', function() {
             var pathSplit = path.split("/");
-            callback("MD5 (" + pathSplit[pathSplit.length - 1] + "c) = " + hash.digest('hex'));
+            callback("MD5 (" + pathSplit[pathSplit.length - 1] + ") = " + hash.digest('hex'));
         });
     }
     else
