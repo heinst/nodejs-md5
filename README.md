@@ -1,4 +1,4 @@
-# nodejs-md5  [![Build Status](https://travis-ci.org/heinst/nodejs-md5.svg)](https://travis-ci.org/heinst/nodejs-md5)
+# nodejs-md5  [![Build Status](https://travis-ci.org/heinst/nodejs-md5.svg)](https://travis-ci.org/heinst/nodejs-md5) [![Totatl Downloads](https://img.shields.io/npm/dt/nodejs-md5.svg)][![Version](https://img.shields.io/npm/v/nodejs-md5.svg)]
 
 A simple node module to give you the md5 of a file or string. 
 Mimics the unix command `md5`.
