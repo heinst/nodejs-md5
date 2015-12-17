@@ -1,4 +1,4 @@
-# nodejs-md5  [![Build Status](https://travis-ci.org/heinst/nodejs-md5.svg)](https://travis-ci.org/heinst/nodejs-md5) [![Totatl Downloads](https://img.shields.io/npm/dt/nodejs-md5.svg)][![Version](https://img.shields.io/npm/v/nodejs-md5.svg)]
+# nodejs-md5  [![Build Status](https://travis-ci.org/heinst/nodejs-md5.svg)](https://travis-ci.org/heinst/nodejs-md5) ![Total Downloads][total] ![Version][version]
 
 A simple node module to give you the md5 of a file or string. 
 Mimics the unix command `md5`.
@@ -78,3 +78,6 @@ console.log(md5.string.reverse("Hello, world")); //"bc6e6f16b8a077ef5fbc8d59d0b9
 ##Contribution welcome!
 
 If you would like to imporve on this library, just make a pull request and I will look it over and accept/improve!
+
+[total]: https://img.shields.io/npm/dt/nodejs-md5.svg
+[version]: https://img.shields.io/npm/v/nodejs-md5.svg
