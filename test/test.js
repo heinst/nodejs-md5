@@ -1,5 +1,6 @@
 var md5 = require("../index.js");
 var expect = require("chai").expect;
+var exceptions = require('exceptions');
 
 describe("A library that mimics the MD5 command shipped with macOS", function() {
     describe("MD5 Outputs for a File", function() {
