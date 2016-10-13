@@ -1,4 +1,4 @@
-# nodejs-md5  [![Build Status](https://travis-ci.org/heinst/nodejs-md5.svg)](https://travis-ci.org/heinst/nodejs-md5) ![Total Downloads][total] ![Version][version]
+# nodejs-md5  ![Version][version] [![Build Status](https://travis-ci.org/heinst/nodejs-md5.svg)](https://travis-ci.org/heinst/nodejs-md5) [![Coverage Status](https://coveralls.io/repos/github/heinst/nodejs-md5/badge.svg?branch=master)](https://coveralls.io/github/heinst/nodejs-md5?branch=master) ![Total Downloads][total]
 
 A simple node module to give you the md5 of a file or string. 
 Mimics the unix command `md5`.
