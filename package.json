@@ -1,6 +1,6 @@
 {
   "name": "nodejs-md5",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gets md5 of file or folder",
   "main": "index.js",
   "scripts": {
