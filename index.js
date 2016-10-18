@@ -53,8 +53,7 @@ function fileMd5(path, callback)
     }
     else
     {
-	    var dirException = new exceptions.Exception("Directory Exception");
-	    dirException.thro(path + ": Is a directory");
+        throw new Error(path + "  - Is a directory");
     }
 }
 
