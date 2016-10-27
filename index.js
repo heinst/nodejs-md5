@@ -1,36 +1,55 @@
 var crypto = require('crypto');
-var exceptions = require('exceptions');
 
 //md5 for strings and its options
 function getHashOfString (str) {
     return crypto.createHash('md5').update(str, 'utf8').digest('hex');
 }
 
-function checkInput(str) {
-
-    if (typeof str === 'undefined' && !str)
+function getMD5(str, callback) {
+    if (typeof str === 'undefined')
     {
-        throw new Error("Variable passed in is undefined");
+        callback(new Error("Variable passed in is undefined"), undefined);
     }
     else if (typeof str !== 'string') {
-        throw new Error("Variable passed in is not a String");
+        callback(new Error("Variable passed in is not a String"), undefined);
+    }
+    else {
+        callback(undefined, getHashOfString(str));
     }
 }
 
 
-exports.string = function (str) {
-    checkInput(str);
-    return  "MD5 (\"" + str + "\") = " + getHashOfString(str);
+exports.string = function (str, callback) {
+    getMD5(str, function(err, md5) {
+        if (err) {
+            callback(err, undefined);
+        }
+        else {
+            callback(undefined, "MD5 (\"" + str + "\") = " + md5);
+        }
+    });
 }
 
-exports.string.quiet = function (str) {
-    checkInput(str);
-    return getHashOfString(str);
+exports.string.quiet = function (str, callback) {
+    getMD5(str, function(err, md5) {
+        if (err) {
+            callback(err, undefined);
+        }
+        else {
+            callback(undefined, getHashOfString(str));
+        }
+    });
 }
 
-exports.string.reverse = function (str) {
-    checkInput(str);
-    return  getHashOfString(str) + " " + "\"" + str + "\"";
+exports.string.reverse = function (str, callback) {
+    getMD5(str, function(err, md5) {
+        if (err) {
+            callback(err, undefined);
+        }
+        else {
+            callback(undefined, getHashOfString(str) + " " + "\"" + str + "\"");
+        }
+    });
 }
 
 //md5 for files and their options
@@ -48,12 +67,12 @@ function fileMd5(path, callback)
         });
 
         stream.on('end', function() {
-            callback(hash.digest('hex'));
+            callback(undefined, hash.digest('hex'));
         });
     }
     else
     {
-        throw new Error(path + "  - Is a directory");
+        callback(new Error(path + "  - Is a directory"), undefined);
     }
 }
 
@@ -67,7 +86,12 @@ function loopThroughPaths(paths, outputType, callback)
         var path = paths[i];
         var pathSplit = path.split("/");
         fileNames.push(pathSplit[pathSplit.length - 1]);
-        fileMd5(path, function(md5) {
+        fileMd5(path, function(err, md5) {
+
+            if (err) {
+                callback(err, undefined);
+            }
+
             var md5Str;
             if(outputType === "reverse") {
                 md5Str = md5 + " " + fileNames[processedCounter];
@@ -83,7 +107,7 @@ function loopThroughPaths(paths, outputType, callback)
 
             if (processedCounter + 1 == i)
             {
-                callback(md5s);
+                callback(undefined, md5s);
             }
             ++processedCounter;
         });
@@ -92,42 +116,73 @@ function loopThroughPaths(paths, outputType, callback)
 }
 
 exports.files = function(paths, callback) {
-    loopThroughPaths(paths, "standard", function(md5List){
-        callback(md5List);
+    loopThroughPaths(paths, "standard", function(err, md5List) {
+        if (err) {
+            callback(err, undefined);
+        }
+        else {
+            callback(undefined, md5List);
+        }
+
     });
 }
 
 exports.files.quiet = function(paths, callback) {
-    loopThroughPaths(paths, "quiet", function(md5List){
-        callback(md5List);
+    loopThroughPaths(paths, "quiet", function(err, md5List){
+        if (err) {
+            callback(err, undefined);
+        }
+        else {
+            callback(undefined, md5List);
+        }
     });
 }
 
 exports.files.reverse = function(paths, callback) {
-    loopThroughPaths(paths, "reverse", function(md5List){
-        callback(md5List);
+    loopThroughPaths(paths, "reverse", function(err, md5List){
+        if (err) {
+            callback(err, undefined);
+        }
+        else {
+            callback(undefined, md5List);
+        }
     });
 }
 
 //md5 for file and their options
 exports.file = function(path, callback) {
-    fileMd5(path, function(md5) {
-        var pathSplit = path.split("/");
-        var md5Str = "MD5 (" + pathSplit[pathSplit.length - 1] + ")" + " = " + md5;
-        callback(md5Str);
+    fileMd5(path, function(err, md5) {
+        if (err) {
+            callback(err, undefined);
+        }
+        else {
+            var pathSplit = path.split("/");
+            var md5Str = "MD5 (" + pathSplit[pathSplit.length - 1] + ")" + " = " + md5;
+            callback(undefined, md5Str);
+        }
     });
 }
 
 exports.file.quiet = function(path, callback) {
-    fileMd5(path, function(md5) {
-        callback(md5);
+    fileMd5(path, function(err, md5) {
+        if (err) {
+            callback(err, undefined);
+        }
+        else {
+            callback(undefined, md5);
+        }
     });
 }
 
 exports.file.reverse = function(path, callback) {
-    fileMd5(path, function(md5) {
-        var pathSplit = path.split("/");
-        var md5Str = md5 + " " + pathSplit[pathSplit.length - 1];
-        callback(md5Str);
+    fileMd5(path, function(err, md5) {
+        if (err) {
+            callback(err, undefined);
+        }
+        else {
+            var pathSplit = path.split("/");
+            var md5Str = md5 + " " + pathSplit[pathSplit.length - 1];
+            callback(undefined, md5Str);
+        }
     });
 }
