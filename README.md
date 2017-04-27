@@ -133,6 +133,7 @@ md5.string.reverse("Hello, world", function (err, md5) {
 ##Contribution welcome!
 
 If you would like to improve on this library, fork it, branch it, pull request it!
+
 [coveralls]: https://img.shields.io/coveralls/heinst/nodejs-md5.svg
 [total]: https://img.shields.io/npm/dt/nodejs-md5.svg
 [version]: https://img.shields.io/npm/v/nodejs-md5.svg
