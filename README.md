@@ -3,21 +3,21 @@
 A simple node module to give you the MD5 of a file or string.
 Mimics the macOS command `md5`.
 
-##To install:
+## To install:
 
 ```bash
 npm install nodejs-md5
 ```
 
-##To import:
+## To import:
 
 ```JavaScript
 var md5 = require("nodejs-md5");
 ```
 
-##Example Usage:
+## Example Usage:
 
-####To get the MD5 of a file:
+#### To get the MD5 of a file:
 
 ```JavaScript
 //md5 ./test/testfile.txt
@@ -55,7 +55,7 @@ md5.file.quiet("./test/testfile.txt", function(err, md5) {
 });
 ```
 
-####To get the MD5s of multiple files in one shot:
+#### To get the MD5s of multiple files in one shot:
 
 ```JavaScript
 //md5 ./test/testfile.txt ./test/anotherTestFile.txt
@@ -93,7 +93,7 @@ md5.files.reverse(["./test/testfile.txt", "./test/anotherTestFile.txt"], functio
 });
 ```
 
-####To get the MD5 of a string:
+#### To get the MD5 of a string:
 
 ```JavaScript
 //md5 -s "Hello, world"
@@ -130,7 +130,7 @@ md5.string.reverse("Hello, world", function (err, md5) {
     }
 });
 ```
-##Contribution welcome!
+## Contribution welcome!
 
 If you would like to improve on this library, fork it, branch it, pull request it!
 
