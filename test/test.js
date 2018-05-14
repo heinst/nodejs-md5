@@ -67,22 +67,22 @@ describe("A library that mimics the MD5 command shipped with macOS. This library
 
     describe("throw", function() {
         it("error for undefined variable given.", function() {
-            md5.string(undefined, function (err, md5) {
-                var expectedError = new Error("Variable passed in is undefined");
+            md5.string(null, function (err, md5) {
+                var expectedError = new Error("Variable passed in is null");
                 expect(err.message).to.equal(expectedError.message);
             });
         });
 
         it("error for undefined variable given.(quiet)", function() {
-            md5.string.quiet(undefined, function (err, md5) {
-                var expectedError = new Error("Variable passed in is undefined");
+            md5.string.quiet(null, function (err, md5) {
+                var expectedError = new Error("Variable passed in is null");
                 expect(err.message).to.equal(expectedError.message);
             });
         });
 
         it("error for undefined variable given. (reverse)", function() {
-            md5.string.reverse(undefined, function (err, md5) {
-                var expectedError = new Error("Variable passed in is undefined");
+            md5.string.reverse(null, function (err, md5) {
+                var expectedError = new Error("Variable passed in is null");
                 expect(err.message).to.equal(expectedError.message);
             });
         });
