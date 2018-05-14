@@ -23,7 +23,6 @@
   },
   "homepage": "https://github.com/heinst/nodejs-md5#readme",
   "dependencies": {
-    "crypto": "latest",
     "exceptions": "latest",
     "fs": "latest"
   },
